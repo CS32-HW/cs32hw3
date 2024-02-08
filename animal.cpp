@@ -1,32 +1,46 @@
-#include <iostream>
-#include <string>
-using namespace std;
-
-// Your declarations and implementations would go here
-
-void animate(const Animal* a)
+class Animal
 {
-    a->speak();
-    cout << "!  My name is " << a->name()
-         << ".  Watch me " << a->moveAction() << "!\n";
-}
+public:
+	Animal(string name) { m_name = name; }
+	virtual ~Animal() {};
+	string name() const { return m_name; }
+	virtual void speak() const = 0;
+	virtual string moveAction() const { return "walk"; }
+private:
+	string m_name;
+};
 
-int main()
+class Cat : public Animal
 {
-    Animal* animals[4];
-    animals[0] = new Cat("Puss in Boots");
-      // Pigs have a name and a weight in pounds.  Pigs under 180
-      // pounds oink; pigs weighing at least 180 pounds grunt.
-    animals[1] = new Pig("Napoleon", 190);
-    animals[2] = new Pig("Wilbur", 50);
-    animals[3] = new Duck("Daffy");
+public:
+	Cat(string name) : Animal(name) {}
+	~Cat() { cout << "Destroying " << name() << " the cat" << endl; }
+	virtual void speak() const { cout << "Meow"; }
+private:
+};
 
-    cout << "Here are the animals." << endl;
-    for (int k = 0; k < 4; k++)
-        animate(animals[k]);
+class Pig : public Animal
+{
+public:
+	Pig(string name, int weight) : Animal(name) { m_weight = weight; }
+	~Pig() { cout << "Destroying " << name() << " the pig" << endl; }
+	virtual void speak() const
+	{
+		if (m_weight < 180)
+			cout << "Oink";
+		else
+			cout << "Grunt";
+	}
+private:
+	int m_weight;
+};
 
-      // Clean up the animals before exiting
-    cout << "Cleaning up." << endl;
-    for (int k = 0; k < 4; k++)
-        delete animals[k];
-}
+class Duck : public Animal
+{
+public:
+	Duck(string name) : Animal(name) {}
+	~Duck() { cout << "Destroying " << name() << " the duck" << endl; }
+	virtual void speak() const { cout << "Quack"; }
+	virtual string moveAction() const { return "swim"; }
+private:
+};
