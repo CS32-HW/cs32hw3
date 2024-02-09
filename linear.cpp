@@ -45,7 +45,16 @@ int firstFalse(const double a[], int n)
   // return -1.
 int locateMinimum(const double a[], int n)
 {
-    return -999;  // This is incorrect.
+	if (n <= 0)
+		return -1;
+	if (n == 1)
+		return 0;
+
+	int min = locateMinimum(a+1, n-1);
+	if (a[0] < a[min+1])
+		return 0;
+	else
+		return 1 + min;
 }
 
   // If all n2 elements of a2 appear in the n1 element array a1, in
@@ -65,5 +74,13 @@ int locateMinimum(const double a[], int n)
   //    10 20 20
 bool includes(const double a1[], int n1, const double a2[], int n2)
 {
-    return false;  // This is not always correct.
+	if (n2 == 0)
+		return true;
+	if (n1 < n2)
+		return false;
+
+	if (a2[0] == a1[0])
+		return includes(a1+1, n1-1, a2+1, n2-1);
+	else
+		return includes(a1+1, n1-1, a2, n2);
 }
