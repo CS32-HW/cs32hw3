@@ -16,6 +16,7 @@ int main ()
 	double z[] = {-1, -2, 3};
 	double w[] = {-1, -2, -3};
 	double q[] = {1, 2, -3};
+	double e[] = {1, -3, -3};
 	assert(!anyFalse(x, 3));
 	assert(anyFalse(y, 3));
 	cout << "function 1 test passed" << endl;
@@ -35,6 +36,7 @@ int main ()
 	assert(locateMinimum(y, 3) == 1);
 	assert(locateMinimum(z, 3) == 1);
 	assert(locateMinimum(w, 3) == 2);
+	assert(locateMinimum(e, 3) == 1);
 	cout << "function 4 test passed" << endl;
 
 	double a1[] = {10, 50, 40, 20, 50, 40, 30};

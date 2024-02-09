@@ -51,7 +51,7 @@ int locateMinimum(const double a[], int n)
 		return 0;
 
 	int min = locateMinimum(a+1, n-1);
-	if (a[0] < a[min+1])
+	if (a[0] <= a[min+1])
 		return 0;
 	else
 		return 1 + min;
