@@ -74,7 +74,7 @@ int locateMinimum(const double a[], int n)
   //    10 20 20
 bool includes(const double a1[], int n1, const double a2[], int n2)
 {
-	if (n2 == 0)
+	if (n2 <= 0)
 		return true;
 	if (n1 < n2)
 		return false;
