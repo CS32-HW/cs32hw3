@@ -11,7 +11,20 @@
   //        50 40 30                        3
 int countIncludes(const double a1[], int n1, const double a2[], int n2)
 {
-	return -999;  // This is incorrect.
+	if (n2 <= 0)
+		return 1;
+	if (n1 < n2)
+		return 0;
+
+	int count = 0;
+	if (a1[0] == a2[0]) {
+		count = countIncludes(a1+1, n1-1, a2+1, n2-1);
+		count += countIncludes(a1+1, n1-1, a2, n2);
+	} else {
+		count = countIncludes(a1+1, n1-1, a2, n2);
+	}
+
+	return count;
 }
 
   // Exchange two doubles
