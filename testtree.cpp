@@ -20,5 +20,18 @@ int main()
 	assert(countIncludes(a1, -7, a5, -1) == 1);
 	assert(countIncludes(a1, -7, a5, 3) == 0);
 	cout << "countIncludes test passed" << endl;
+
+	cout << "before" << endl;
+	for (int i = 0; i < 7; i++)
+		cout << a1[i] << " ";
+	cout << endl;
+
+	order(a1, 7);
+
+	cout << "after" << endl;
+	for (int i = 0; i < 7; i++)
+		cout << a1[i] << " ";
+	cout << endl;
+
 	return 0;
 }

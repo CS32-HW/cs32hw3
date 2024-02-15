@@ -91,5 +91,16 @@ void divide(double a[], int n, double divider, int& firstNotGreater, int& firstL
   // If n <= 1, do nothing.
 void order(double a[], int n)
 {
-	return;  // This is not always correct.
+	if (n <= 1)
+		return; // nothing to do
+
+	int firstNotGreater, firstLess;
+	divide(a, n, a[n/2], firstNotGreater, firstLess);
+
+	if (firstNotGreater < n)
+		order(a, firstNotGreater+1);
+	if (firstLess < n)
+		order(a+firstLess, n-firstLess);
+
+	return;
 }
