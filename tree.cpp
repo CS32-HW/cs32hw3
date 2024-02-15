@@ -98,7 +98,7 @@ void order(double a[], int n)
 	divide(a, n, a[n/2], firstNotGreater, firstLess);
 
 	if (firstNotGreater < n)
-		order(a, firstNotGreater+1);
+		order(a, firstNotGreater);
 	if (firstLess < n)
 		order(a+firstLess, n-firstLess);
 
